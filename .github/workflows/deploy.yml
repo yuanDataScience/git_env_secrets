@@ -10,7 +10,7 @@ jobs:
   test:
     environment: testing # only main branch can trigger this job due to testing env config
     env: # will use env secrets defined in testing environment
-      # you can also define repo-level secrets. The grammar is the same
+      # you can also define repo-level secrets.
       MONGODB_CLUSTER_ADDRESS: cluster0.zsg1teu.mongodb.net
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }} 
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
