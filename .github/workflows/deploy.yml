@@ -8,12 +8,13 @@ env: # workflow level env variable
   MONGODB_DB_NAME: gha-demo
 jobs:
   test:
-    env:
+    environment: testing # only main branch can trigger this job due to testing env config
+    env: # will use env secrets defined in testing environment
+      # you can also define repo-level secrets. The grammar is the same
       MONGODB_CLUSTER_ADDRESS: cluster0.zsg1teu.mongodb.net
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }} 
       MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
-    # environment: testing
     runs-on: ubuntu-latest
     steps:
       - name: Get Code
