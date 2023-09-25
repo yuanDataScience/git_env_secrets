@@ -10,8 +10,8 @@ jobs:
   test:
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.zsg1teu.mongodb.net
-      MONGODB_USERNAME: yuan
-      MONGODB_PASSWORD: tQ1zgChfsZKksoNU
+      MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }} 
+      MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
       PORT: 8080
     # environment: testing
     runs-on: ubuntu-latest
@@ -37,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
+        run: |
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
           echo "MONGODB_DB_NAME: ${{ env.MONGODB_DB_NAME }}"
+        # the MONGODB_USERNAME will not be access since it is
+        # defined in another job's environment
